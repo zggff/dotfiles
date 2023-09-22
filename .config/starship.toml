@@ -1,0 +1,118 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+$username\
+$hostname\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$env_var\
+$custom\
+
+$c\
+$cmake\
+$golang\
+$haskell\
+$lua\
+$nodejs\
+$python\
+$rust\
+$vlang\
+$zig\
+$meson\
+
+$line_break\
+$jobs\
+$character
+"""
+
+right_format = """
+$status
+$cmd_duration
+"""
+
+continuation_prompt = "▶▶" 
+
+# [username]
+# show_always = true
+# format = '[$user]($style)@'
+#
+# [hostname]
+# ssh_only = false
+# format = '[$ssh_symbol$hostname]($style) '
+
+[cmd_duration]
+format = "took [$duration]($style)"
+style = "bold yellow"
+min_time = 1_000
+
+
+[time]
+format = "[$time]($style) "
+disabled =false 
+time_range = ""
+
+[shell]
+disabled = true 
+
+[status]
+disabled = false
+format = "[$symbol $status]($style) "
+
+[c]
+symbol = " "
+format ='\[[$symbol($version(-$name))]($style)\]' 
+detect_extensions = ["c", "h", "cpp", "hpp"]
+
+[directory]
+read_only = " "
+
+[git_branch]
+symbol = " "
+format = 'on [$symbol$branch]($style) '
+
+
+[golang]
+format = '\[[$symbol($version)]($style)\] '
+symbol = " "
+
+[haskell]
+format = '\[[$symbol($version)]($style)\] '
+symbol = " "
+
+[memory_usage]
+format ='$symbol[${ram}(${swap})]($style) ' 
+disabled = false
+symbol = " "
+threshold = 20
+
+[meson]
+symbol = "喝 "
+
+[nodejs]
+format = '\[[$symbol($version)]($style)\] '
+detect_extensions = [""]
+detect_folders = [""]
+symbol = " "
+
+[python]
+format = '\[[$symbol($version)]($style)\] '
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+format = '\[[$symbol($version)]($style)\] '
+detect_extensions = [""]
+symbol = " "
+
+[package]
+symbol = " "
+disabled = true
