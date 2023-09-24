@@ -11,6 +11,17 @@ wezterm.on("window-config-reloaded", function(window, _)
     end
 end)
 
+wezterm.on('toggle_ligatures', function(window, _)
+    local overrides = window:get_config_overrides() or {}
+    wezterm.log_info(overrides.use_fancy_tab_bar)
+    if not overrides.harfbuzz_features then
+        overrides.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+    else
+        overrides.harfbuzz_features = nil
+    end
+    window:set_config_overrides(overrides)
+end)
+
 local dark_theme  = 'Catppuccin Mocha'
 local light_theme = 'Catppuccin Latte'
 
@@ -29,7 +40,7 @@ function SchemeForAppearance(appearance)
     end
 end
 
-return {
+local config = {
     default_prog = { "/bin/zsh", "-l" },
     font = wezterm.font_with_fallback({
         "Cascadia Code",
@@ -70,6 +81,11 @@ return {
             mods = "CMD",
             action = act.ActivateTabRelative(1)
         },
+        {
+            key = "l",
+            mods = "CMD",
+            action = act.EmitEvent 'toggle_ligatures'
+        },
     },
 
     inactive_pane_hsb = {
@@ -83,6 +99,8 @@ return {
         bottom = "0cell",
     },
 }
+
+return config
 --
 --
 -- keys_zellij = {
