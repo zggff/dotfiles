@@ -82,10 +82,30 @@ local config = {
             action = act.ActivateTabRelative(1)
         },
         {
-            key = "l",
+            key = "p",
             mods = "CMD",
             action = act.EmitEvent 'toggle_ligatures'
         },
+        {
+            key = "h",
+            mods = "CMD",
+            action = act.ActivatePaneDirection("Left")
+        },
+        {
+            key = "l",
+            mods = "CMD",
+            action = act.ActivatePaneDirection("Right")
+        },
+        {
+            key = "j",
+            mods = "CMD",
+            action = act.ActivatePaneDirection("Down")
+        },
+        {
+            key = "k",
+            mods = "CMD",
+            action = act.ActivatePaneDirection("Up")
+        }
     },
 
     inactive_pane_hsb = {
